@@ -143,17 +143,26 @@ class SortingRobot:
 #             print(robot._position, robot._item, robot._list)
             
             
-#         for _ in range(5):
-#              self.move_left()  
+        for _ in range(len(self._list)):
+             self.move_left()  
         
-        while self.can_move_right(): 
+       
+#       print(robot._position, robot._item, robot._list)   
+        
+        for _ in range(len(self._list)):
             if self.compare_item() == -1:
                 self.swap_item()
-                self.move_left()
+                self.move_right()
             elif self.compare_item() == 1:
-                self.move_left()
+                self.move_right()
+                
+#         print(robot._position, robot._item, robot._list)   
         
-#         print(robot._position, robot._item, robot._list)     
+        if self.compare_item() == None:
+            self.swap_item()
+            
+#         print(robot._position, robot._item, robot._list) 
+    
 
 
 
