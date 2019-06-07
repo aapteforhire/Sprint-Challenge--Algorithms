@@ -105,39 +105,55 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+            
+        for _ in range(len(self._list)):
         
-        # First Step
-        if self.compare_item() == None:
-            self.swap_item() # Swaps the None item with the first item on the list
-            self.move_right() # Robot should be at l[1]
-            
-            
-        while self._light == "OFF":
-            
-            # Moving through the list to compare values
+            # First Step l[0]
+            if self.compare_item() == None:
+                self.swap_item() # Swaps the None item with the first item on the list
+                self.move_right() # Robot should be at l[1]
+
+
+
+            # Moving right through the list to compare values
             while self.can_move_right(): # While the robot is able to move right
                 if self.compare_item() == 1:
                     self.swap_item()
                     self.move_right()
                 elif self.compare_item() == -1:
                     self.move_right()
-#               print(self._position, self._item)
+
 
 
             # Can't move right, therefore, need to go left
+            # If there is no None object, robot continues to go left. 
+
             while self.can_move_left():
-                if self.compare_item() == None: # Returns smallest value to the None object position
-                    self.swap_item()
-                    self.can_move_left() == False
+                if self.compare_item() == None:
+                    break
                 else:
                     self.move_left()
-#               print(self._position, self._item)
 
-            # If there is no None object, robot continues to go left. 
+            if self.can_move_right():
+                self.swap_item()
+                self.move_right()
                 
+
+
+#             print(robot._position, robot._item, robot._list)
             
             
-            self.set_light_on()  
+#         for _ in range(5):
+#              self.move_left()  
+        
+        while self.can_move_right(): 
+            if self.compare_item() == -1:
+                self.swap_item()
+                self.move_left()
+            elif self.compare_item() == 1:
+                self.move_left()
+        
+#         print(robot._position, robot._item, robot._list)     
 
 
 
