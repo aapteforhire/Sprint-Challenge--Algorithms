@@ -105,8 +105,12 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-            
-        for _ in range(len(self._list)):
+        
+#         for _ in range(len(self._list)-1):
+#             self.move_right()        
+        
+        
+        for _ in range(len(self._list)-1):
         
             # First Step l[0]
             if self.compare_item() == None:
@@ -129,39 +133,21 @@ class SortingRobot:
             # If there is no None object, robot continues to go left. 
 
             while self.can_move_left():
-                if self.compare_item() == None:
-                    break
-                else:
+                if self.compare_item() == 1:
+                    self.swap_item()
                     self.move_left()
+                elif self.compare_item() == -1:
+                    self.move_left()
+                elif self.compare_item() == None:
+                    break
+#                 else:
+#                     self.move_left()
 
             if self.can_move_right():
                 self.swap_item()
                 self.move_right()
-                
-
-
-#             print(robot._position, robot._item, robot._list)
             
-            
-        for _ in range(len(self._list)):
-             self.move_left()  
         
-       
-#       print(robot._position, robot._item, robot._list)   
-        
-        for _ in range(len(self._list)):
-            if self.compare_item() == -1:
-                self.swap_item()
-                self.move_right()
-            elif self.compare_item() == 1:
-                self.move_right()
-                
-#         print(robot._position, robot._item, robot._list)   
-        
-        if self.compare_item() == None:
-            self.swap_item()
-            
-#         print(robot._position, robot._item, robot._list) 
     
 
 
